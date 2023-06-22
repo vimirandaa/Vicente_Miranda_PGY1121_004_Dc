@@ -1,0 +1,98 @@
+#Funciones secundarias
+import random
+
+vehiculos = []
+
+#pa grabar
+def grabar_vehiculos():
+    tipo = input("Ingrese el tipo de vehiculo: ");
+    patente = input("Ingrese la patente del vehiculo: ");
+    marca = input("Ingrese la marca del vehiculo: ");
+    precio = input("Ingrese el precio del vehiculo: ");
+    multas = [];
+    fecha_registro = input("Ingrese la fecha de registro del vehiculo: ");
+    nombre_dueño = input("Ingrese el nombre del dueño del vehiculo: ");
+
+    if marca <2 or marca >15:
+        print("Error la marca debe tener entre 2 y 15 caracteres.");
+        
+
+    if precio <= 5000000:
+        print ("Error el precio debe ser mayor a 5.000.000.");
+        
+
+    vehiculo = {
+        "tipo" : tipo,
+        "patente" : patente,
+        "marca" : marca,
+        "precio" : precio,
+        "multas" : multas,
+        "fecha_registro" : fecha_registro,
+        "nombre_dueño" : nombre_dueño
+    }
+
+    vehiculo.append(vehiculo);
+    print("Vehiculo registrado exitosamente");
+#pa buscar
+def buscar_vehiculo():
+    patente = input("Ingrese la patente que desea buscar: ");
+
+    for vehiculo in vehiculos:
+        if vehiculo["patente"] == patente:
+            print("Informacion del vehiculo: ");
+            print("Tipo:", vehiculo["tipo"]);
+            print("Patente:", vehiculo["patente"]);
+            print("Marca:", vehiculo["marca"]);
+            print("Precio", vehiculo["precio"]);
+            print("Fecha de Registro", vehiculo["fecha_registro"]);
+            print("Nombre de Dueño", vehiculo["nombre_dueño"]);
+            return
+
+    print("No se encontro ningun vehiculo con esa patente.");
+
+#pa certificar
+def imrpimir_certificados():
+    certificados = ["Emision de contaminantes", "Anotaciones vigentes", "Multas"];
+
+    for vehiculo in vehiculos:
+        certificado = random.choice(certificados);
+
+        monto_multa = random.randit(1500, 3500);
+        print("Nombre certificado:", certificado);
+        print("Patente Vehiculo:", vehiculo["patente"]);
+        print("Datos dueño", vehiculo["nombre_dueño"]);
+        print("Monto multa", monto_multa);
+        print("--"*20);
+
+#pa salir
+def salir_progra(nombre_apellido, vers):
+    print(f"¡Nos vemos pronto, {nombre_apellido}!");
+    print(f"Version del programa: {version}");
+
+#Funciones Principales
+def selecciones():
+    nombre_apellido = input("Ingrese su Nombre y Apelldio: ");
+    version = "4.1"
+
+while True: 
+    print("--"*20);
+    print("Automotora Auto Seguro");
+    print("1/ Guardar Vehiculo");
+    print("2/ Buscar Vehiculo");
+    print("3/ Imprimir Certificados");
+    print("4/ Salir del Programa")
+    print("--"*20);
+
+    eleccion = input("Seleccione la opcion que desea: ");
+        
+    if eleccion == "1":
+        grabar_vehiculos();
+    elif eleccion == "2":
+        buscar_vehiculo();
+    elif eleccion == "3":
+        imrpimir_certificados();
+    elif eleccion == "4":
+        salir_progra(nombre_apellido, vers);
+        break
+    else:
+        print("Usted eligio una opcion inexistente, porfavor intentelo nuevamente.");
